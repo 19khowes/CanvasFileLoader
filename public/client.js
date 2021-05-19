@@ -1,6 +1,8 @@
 console.log("working")
 const submit = document.getElementById('btn');
+const clear_btn = document.getElementById('clear-btn');
 const course_input = document.getElementById('course-input');
+const images_container = document.getElementById('images-container');
 
 submit.addEventListener('click', async () => {
     const value = course_input.value;
@@ -28,9 +30,13 @@ submit.addEventListener('click', async () => {
         new_image.classList.add('images');
 
         root.append(new_image);
-        document.body.append(root);
+        images_container.append(root);
 
         console.log(item.url)
     })
-    
 });
+
+clear_btn.addEventListener('click', () => {
+    images_container.innerHTML = "";
+})
+
