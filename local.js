@@ -6,7 +6,7 @@ const per_page = 1000;
 //let url = "https://usu.beta.instructure.com/api/v1/courses";
 let url = "https://usu.beta.instructure.com/api/v1/courses/615872/files";
 let query = "?access_token=" + token + "&per_page=" + per_page;
-
+console.log(url + query);
 getData(url + query)
     .then((data) => {
         console.log(data);

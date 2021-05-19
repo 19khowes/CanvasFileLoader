@@ -19,5 +19,18 @@ submit.addEventListener('click', async () => {
 
     const post_response = await fetch('/api', options);
     const response_json = await post_response.json();
-    console.log(response_json);
+    response_json.forEach(item => {
+        const root = document.createElement('div');
+        const new_image = document.createElement('img');
+
+        new_image.src = item.url;
+        new_image.width = 500;
+        new_image.classList.add('images');
+
+        root.append(new_image);
+        document.body.append(root);
+
+        console.log(item.url)
+    })
+    
 });
