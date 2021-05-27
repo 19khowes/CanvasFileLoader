@@ -1,4 +1,3 @@
-console.log("working")
 const submit = document.getElementById('btn');
 const clear_btn = document.getElementById('clear-btn');
 const course_input = document.getElementById('course-input');
