@@ -8,8 +8,8 @@ const images_container = document.getElementById('images-container');
 const folders_container = document.getElementById('folders-container');
 
 submit.addEventListener('click', async () => {
-    const course = course_input.value;
-    const folder = folder_input.value;
+    const course = (course_input.value).trim();
+    const folder = (folder_input.value).trim();
     const data = {
         course,
         folder
@@ -52,7 +52,7 @@ submit.addEventListener('click', async () => {
 });
 
 folders_btn.addEventListener('click', async () => {
-    const course = course_input.value;
+    const course = (course_input.value).trim();
     const data = {
         course
     }

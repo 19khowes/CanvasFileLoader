@@ -28,8 +28,8 @@ app.post('/folders', async (request, response) => {
 });
 
 app.post('/api', async (request, response) => {
-    const course_id = (request.body.course)
-    const folder = (request.body.folder)
+    const course_id = (request.body.course);
+    const folder = (request.body.folder);
     console.log(folder);
 
     let fetch_url = `https://usu.beta.instructure.com/api/v1/folders/${folder}/files?access_token=${token}&per_page=${per_page}`;
