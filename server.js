@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 const url = "https://usu.beta.instructure.com/api/v1/courses/615872/files";
 const token = process.env.API_TOKEN;
 const per_page = 1000;
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
     console.log(`Server now listening at port ${port}`)
