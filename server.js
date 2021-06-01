@@ -2,7 +2,6 @@ const express = require('express');
 require('dotenv').config();
 const app = express();
 const fetch = require('node-fetch');
-const url = "https://usu.beta.instructure.com/api/v1/courses/615872/files";
 const token = process.env.API_TOKEN;
 const per_page = 1000;
 const port = process.env.PORT || 3000;
