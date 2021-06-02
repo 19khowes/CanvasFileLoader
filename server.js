@@ -102,5 +102,7 @@ app.post('/course', async (request, response) => {
         response.json({
             images_array: images
         });
+    }).catch((err) => {
+        console.log(err);
     });
 });
