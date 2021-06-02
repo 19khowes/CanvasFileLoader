@@ -41,6 +41,41 @@ app.post('/api', async (request, response) => {
     response.json(json);
 });
 
-app.get('/canvas', async (request, response) => {
+app.post('/course', async (request, response) => {
+    const course_id = (request.body.course);
+    console.log(course_id);
 
+    let course_url = `https://usu.instructure.com/api/v1/courses/${course_id}/folders/?access_token=${token}&per_page=${per_page}`;
+    // let folder_url = "https://usu.instructure.com/api/v1/folders/${folder}/files?access_token=${token}&per_page=${per_page}";
+    let folder_url;
+
+    const course_response = await fetch(course_url);
+    const course_json = await course_response.json();
+
+    let folder;
+    let images = [];
+    let folder_response;
+    let folder_json;
+    course_json.forEach(async (item) => {
+        folder = item.id;
+        folder_url = "https://usu.instructure.com/api/v1/folders/" + folder + `/files?access_token=${token}&per_page=${per_page}`;
+        //console.log(folder_url);
+
+        folder_response = await fetch(folder_url);
+        folder_json = await folder_response.json();
+
+        folder_json.forEach((file) => {
+            images.push(file.url);
+        })
+
+        console.log(images);
+        // clear folder_url for next loop
+        folder_url = "";
+    });
+
+
+
+    response.json({
+        images_array: images
+    });
 });
