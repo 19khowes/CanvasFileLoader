@@ -24,7 +24,23 @@ files_btn.addEventListener('click', async () => {
     const post_reponse = await fetch('/course', options);
     const response_json = await post_reponse.json();
 
-    console.log(response_json);
+    response_json.images_array.forEach(item => {
+        if (item != "not an image") {
+            const root = document.createElement('div');
+            let new_image;
+
+            new_image = document.createElement('img');
+
+            new_image.src = item;
+            new_image.width = 500;
+            new_image.classList.add('images');
+
+            root.append(new_image);
+            images_container.append(root);
+        }
+
+        console.log(item);
+    })
 });
 
 clear_btn.addEventListener('click', () => {

@@ -52,30 +52,55 @@ app.post('/course', async (request, response) => {
     const course_response = await fetch(course_url);
     const course_json = await course_response.json();
 
+    // count will be the number of folders in a course
+    let count = 0;
+    course_json.forEach((item) => {
+        count++;
+    });
     let folder;
     let images = [];
     let folder_response;
     let folder_json;
-    course_json.forEach(async (item) => {
-        folder = item.id;
-        folder_url = "https://usu.instructure.com/api/v1/folders/" + folder + `/files?access_token=${token}&per_page=${per_page}`;
-        //console.log(folder_url);
+    let i = 0;
+    let p = new Promise((resolve, reject) => {
+        course_json.forEach(async (item) => {
+            folder = item.id;
+            folder_url = "https://usu.instructure.com/api/v1/folders/" + folder + `/files?access_token=${token}&per_page=${per_page}`;
+            console.log(folder_url);
+    
+            folder_response = await fetch(folder_url);
+            folder_json = await folder_response.json();
+            
+            const addToImages = async () => {
+                await folder_json.forEach((file) => {
+                    if (file.mime_class == "image") {
+                        images.push(file.url);
+                    }
+                    else {
+                        images.push('not an image');
+                    }
+                });
+            };
 
-        folder_response = await fetch(folder_url);
-        folder_json = await folder_response.json();
+            addToImages();
+            
 
-        folder_json.forEach((file) => {
-            images.push(file.url);
-        })
+            
+            // clear folder_url for next loop and increment i
+            folder_url = "";
+            i++;
 
-        console.log(images);
-        // clear folder_url for next loop
-        folder_url = "";
+            // check if done, to resolve promise p
+            if (i == count) {
+                resolve();
+            }
+        });
     });
 
-
-
-    response.json({
-        images_array: images
+    p.then(() => {
+        console.log(images);
+        response.json({
+            images_array: images
+        });
     });
 });
