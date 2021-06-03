@@ -44,5 +44,5 @@ files_btn.addEventListener('click', async () => {
 });
 
 clear_btn.addEventListener('click', () => {
-    console.log("clear");
+    images_container.innerHTML = "";
 });
