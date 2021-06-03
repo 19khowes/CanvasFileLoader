@@ -3,7 +3,19 @@
 body {
     padding: 0;
     margin: 0;
+    background-color: #333;
+    color: white;
     font-family: Poppins, sans-serif;
+}
+
+h1 {
+    font-weight: normal;
+    margin: 10px 0px 0px 10px; 
+}
+
+h2 {
+    font-weight: normal;
+    margin: 10px 0px 20px 20px; 
 }
 
 .course-interface {
@@ -16,7 +28,7 @@ body {
 
 .images {
     margin: 20px;
-    border: 2px solid black;
+    border: 2px solid #e8e8e8;
 }
 
 .btn {
@@ -31,6 +43,7 @@ body {
     border: none;
     cursor: pointer;
 }
+
 .btn:hover {
     color: white;
     background-color: rgb(45, 108, 167);
@@ -45,21 +58,20 @@ body {
 }
 
 input {
-    border: none;
-    padding: 5px;
-    outline: 2px solid #202020;
-    margin: 5px;
-    width: 5em;
-}
-
-input:focus {
-    border: none;
+    background: #e8e8e8;
     padding: 5px;
     margin: 5px;
-    width: 5em;
+    width: 4em;
+    border-radius: 10%;
+    outline: none;
+    border: 1px solid #2e3852;
+    font-size: 1em;
+    padding: .5em;
+    color: black;
+    border-radius: 5px;
 }
 
-ul {
+nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -67,11 +79,11 @@ ul {
     background-color: #333;
 }
 
-li {
+nav li {
     float: left;
 }
 
-li a {
+nav li a {
     display: block;
     color: white;
     text-align: center;
@@ -79,6 +91,6 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
+nav li a:hover {
     background-color: #111;
 }
