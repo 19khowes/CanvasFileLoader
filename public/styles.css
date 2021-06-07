@@ -29,6 +29,7 @@ h2 {
 .images {
     margin: 20px;
     border: 2px solid #e8e8e8;
+    width: 20vw;
 }
 
 .btn {
@@ -103,4 +104,9 @@ header {
     position: sticky;
     top: 0;
     background-color: #111;
+}
+
+#images-container {
+    display: flex;
+    flex-wrap: wrap;
 }
