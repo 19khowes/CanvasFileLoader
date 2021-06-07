@@ -23,6 +23,7 @@ files_btn.addEventListener('click', async () => {
 
     const post_reponse = await fetch('/course', options);
     const response_json = await post_reponse.json();
+    console.log(response_json)
 
     response_json.images_array.forEach(item => {
         if (item != "not an image") {
@@ -39,7 +40,7 @@ files_btn.addEventListener('click', async () => {
             images_container.append(root);
         }
 
-        console.log(item);
+        // console.log(item);
     })
 });
 
